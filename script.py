@@ -2,9 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 # result = requests.get("https://google.com/")
-result = requests.get("https://www.whitehouse.gov/briefings-statements/")
-# input = input("Enter a url: ")
-# result = requests.get(input)
+# result = requests.get("https://www.whitehouse.gov/briefings-statements/")
+input = input("Enter a url: ")
+result = requests.get(input)
 
 # print(result.status_code)
 # print(result.headers)
@@ -27,4 +27,4 @@ for h2_tag in soup.find_all('h2'):
     a_tag = h2_tag.find('a')
     urls.append(a_tag.attrs['href'])
 
-print(urls)
+print(urls[0])
