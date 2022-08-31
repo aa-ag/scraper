@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 ############------------ FUNCTION(S) ------------##############################
-def scrape_images(url):
+def get_img_href_srcs(url):
     r = requests.get(url)
     
     soup = BeautifulSoup(r.content, "html.parser")
@@ -14,5 +14,5 @@ def scrape_images(url):
 
 ############------------ DRIVER CODE ------------##############################ß
 if __name__ == "__main__":
-    url = "https://support.apple.com/mac/macbook-pro"
-    scrape_images(url)
+    url = "https://support.zendesk.com/hc/en-us/articles/4408822236058"
+    get_img_href_srcs(url)
