@@ -17,9 +17,11 @@ def get_img_href_srcs(url):
 def download_files(img_srcs):
     
     for img_src in img_srcs:
-        r = requests.get(img_src, stream=True)
+        file_name = img_src.split("/")[-1]
+        print(file_name)
+        # r = requests.get(img_src, stream=True)
 
-        print(r.content)
+        # print(r.status_code)
         
 
 
@@ -27,5 +29,4 @@ def download_files(img_srcs):
 if __name__ == "__main__":
     url = "https://support.zendesk.com/hc/en-us/articles/4408822236058"
     img_srcs = get_img_href_srcs(url)
-    print(img_srcs)
-    # download_files(img_srcs)
+    download_files(img_srcs)
