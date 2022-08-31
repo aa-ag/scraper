@@ -10,15 +10,22 @@ def get_img_href_srcs(url):
 
     return [
         img.get("src") for img in soup.select("img")
+        if "https://" in img.get("src")
     ]
 
 
 def download_files(img_srcs):
-    pass
+    
+    for img_src in img_srcs:
+        r = requests.get(img_src, stream=True)
+
+        print(r.content)
+        
 
 
 ############------------ DRIVER CODE ------------##############################ß
 if __name__ == "__main__":
     url = "https://support.zendesk.com/hc/en-us/articles/4408822236058"
     img_srcs = get_img_href_srcs(url)
-    download_files(img_srcs)
+    print(img_srcs)
+    # download_files(img_srcs)
