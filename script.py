@@ -8,11 +8,17 @@ def get_img_href_srcs(url):
     
     soup = BeautifulSoup(r.content, "html.parser")
 
-    for img in soup.select("img"):
-        print(img.get("src"))
+    return [
+        img.get("src") for img in soup.select("img")
+    ]
+
+
+def download_files(img_srcs):
+    pass
 
 
 ############------------ DRIVER CODE ------------##############################ß
 if __name__ == "__main__":
     url = "https://support.zendesk.com/hc/en-us/articles/4408822236058"
-    get_img_href_srcs(url)
+    img_srcs = get_img_href_srcs(url)
+    download_files(img_srcs)
