@@ -1,4 +1,5 @@
 ############------------ IMPORTS ------------##################################
+from fileinput import filename
 import requests
 from bs4 import BeautifulSoup
 
@@ -8,20 +9,32 @@ def get_img_href_srcs(url):
     
     soup = BeautifulSoup(r.content, "html.parser")
 
-    return [
+    img_srcs = [
         img.get("src") for img in soup.select("img")
         if "https://" in img.get("src")
     ]
 
+    print(f"Found {len(img_srcs)} img srcs.")
+
+    return img_srcs
+
 
 def download_files(img_srcs):
+    count = 0
     
     for img_src in img_srcs:
+        
         file_name = img_src.split("/")[-1]
-        print(file_name)
-        # r = requests.get(img_src, stream=True)
 
-        # print(r.status_code)
+        r = requests.get(img_src, stream=True)
+
+        if r.status_code == 200:
+            with open(f"files/{file_name}", "wb") as f:
+                for chunk in r.iter_content():
+                    f.write(chunk)
+            count += 1
+
+    print(f"Downloaded {count} files.")
         
 
 
