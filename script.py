@@ -4,6 +4,10 @@ from bs4 import BeautifulSoup
 
 ############------------ FUNCTION(S) ------------##############################
 def get_img_href_srcs(url):
+    '''
+     Get response from a url, and
+     parse the image links from it
+    '''
     r = requests.get(url)
     
     soup = BeautifulSoup(r.content, "html.parser")
