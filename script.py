@@ -23,6 +23,9 @@ def get_img_href_srcs(url):
 
 
 def download_files(img_srcs):
+    '''
+     Use image urls, and download the files hosted
+    '''
     count = 0
     
     for img_src in img_srcs:
