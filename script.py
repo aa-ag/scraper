@@ -1,5 +1,4 @@
 ############------------ IMPORTS ------------##################################
-from fileinput import filename
 import requests
 from bs4 import BeautifulSoup
 
